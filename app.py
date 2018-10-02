@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 from collections import OrderedDict
 import string
 
@@ -59,6 +59,13 @@ def index():
         for k,v in urls.items():
             if v == url:
                 return render_template('index.html', url = BASE_URL + k)
+
+@app.route('/<string:url_id>')
+def goto(url_id):
+    if urls.get(url_id):
+        return redirect(urls.get(url_id))
+    else:
+        return render_template('index.html', error = "Nibba it's 404, add it first")
 
 if __name__ == '__main__':
     loadurls()
