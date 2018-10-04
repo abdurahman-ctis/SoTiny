@@ -14,15 +14,15 @@ charset.extend(i for i in string.ascii_lowercase)
 
 # storing shortened urls
 urls = OrderedDict()
-def loadurls():
-    global urls
-    try:
-        with open("urls.txt") as f:
-            for line in f:
-                (key, val) = line.split()
-                urls[key] = val
-    except:
-        return "<h1>Error</h1>"
+# def loadurls():
+#     global urls
+#     try:
+#         with open("urls.txt") as f:
+#             for line in f:
+#                 (key, val) = line.split()
+#                 urls[key] = val
+#     except:
+#         return "<h1>Error</h1>"
 
 # get next string for storing url recursively
 def increment(url, index):
@@ -54,8 +54,8 @@ def index():
         if not url in urls.values():
             print('NEW')
             urls[short] = url
-            with open("urls.txt",'a') as f:
-                f.write(short+' '+url+'\n')
+            # with open("urls.txt",'a') as f:
+            #     f.write(short+' '+url+'\n')
         for k,v in urls.items():
             if v == url:
                 return render_template('index.html', url = BASE_URL + k)
@@ -68,5 +68,5 @@ def goto(url_id):
         return render_template('index.html', error = "Nibba it's 404, add it first")
 
 if __name__ == '__main__':
-    loadurls()
+    # loadurls()
     app.run(port=8000)
