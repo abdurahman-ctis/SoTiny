@@ -69,4 +69,4 @@ def goto(url_id):
 
 if __name__ == '__main__':
     loadurls()
-    app.run(debug=True)
+    app.run(port=8000)
