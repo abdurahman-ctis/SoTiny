@@ -19,6 +19,22 @@
         <br />
         <a href = '{{url}}' target="_blank">{{url}}</a>
         <div style="color:red">{{error}}</div>
+        <br />
+        {% if url %}
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+            <p id="p1" class="hiddenspirit">{{url}}</p>
+            <button id="button" onclick="copyToClipboard('#p1')">Copy to clipboard</button>
+            <script>
+                    function copyToClipboard(element) {
+                    var $temp = $("<input>");
+                    $("body").append($temp);
+                    $temp.val($(element).text()).select();
+                    document.execCommand("copy");
+                    $temp.remove();
+                    alert("Link Copied !!!")
+                    }
+            </script>
+        {% endif %}
     </div>
 </body>
 </html>
