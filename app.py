@@ -65,7 +65,7 @@ def goto(url_id):
     if urls.get(url_id):
         return redirect(urls.get(url_id))
     else:
-        return render_template('index.html', error = "Nibba it's 404, add it first")
+        return render_template('index.html', error = "Bruh it's 404, add it first")
 
 if __name__ == '__main__':
     # loadurls()
